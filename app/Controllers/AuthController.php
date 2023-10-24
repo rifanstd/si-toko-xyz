@@ -45,7 +45,13 @@ class AuthController extends BaseController
 
                 $session->set($sessionData);
 
+                if ($data['role'] == '1') {
+                    return redirect()->to('/');
+                }
+
+                // Nanti diganti ke halaman utama kasir
                 return redirect()->to('/');
+
             } else {
                 $session->setFlashdata('message', 'Password incorrect.');
                 return redirect()->to('/login');
