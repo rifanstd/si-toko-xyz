@@ -16,9 +16,14 @@ class DashboardController extends BaseController
         }
 
         $data = [
-            'title' => 'Dashboard'
+            'title' => 'Dashboard ' . $session->get('full_name'),
         ];
 
-        return view('dashboard', $data);
+        if ($session->get('role') == '1') {
+            return view('admin/dashboard', $data);
+        } else {
+            return view('employee/dashboard', $data);
+        }
+
     }
 }

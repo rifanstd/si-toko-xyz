@@ -32,7 +32,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <span class="nav-link text-dark">Selamat Datang, Admin.</span>
+                    <span class="nav-link text-dark">Selamat Datang</span>
                 </li>
             </ul>
 
@@ -54,16 +54,6 @@
             </a>
 
             <div class="sidebar">
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="/assets/admin-lte/dist/img/user2-160x160.jpg" class="img-circle elevation-2"
-                            alt="User Image">
-                    </div>
-                    <div class="info">
-                        <a href="#" class="d-block">Admin</a>
-                    </div>
-                </div>
-
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
@@ -72,6 +62,14 @@
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/users" class="nav-link">
+                                <span><i class="nav-icon fas fa-user"></i></span>
+                                <p>
+                                    Akun
                                 </p>
                             </a>
                         </li>
@@ -86,7 +84,9 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Dashboard</h1>
+                            <h1 class="m-0">
+                                <?= $title; ?>
+                            </h1>
                         </div>
                     </div>
                 </div>
@@ -120,7 +120,6 @@
     <script src="/assets/admin-lte/plugins/summernote/summernote-bs4.min.js"></script>
     <script src="/assets/admin-lte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <script src="/assets/admin-lte/dist/js/adminlte.js"></script>
-    <script src="/assets/admin-lte/dist/js/demo.js"></script>
     <script src="/assets/admin-lte/dist/js/pages/dashboard.js"></script>
 </body>
 
