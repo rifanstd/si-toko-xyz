@@ -50,15 +50,15 @@ class CategoryController extends BaseController
             return redirect()->back()->withInput();
         }
 
-        $slug = url_title($this->request->getVar('name'), '-', true);
+        $slug = url_title($this->request->getVar('category_name'), '-', true);
 
         $data = [
-            'name' => $this->request->getVar('name'),
+            'category_name' => $this->request->getVar('category_name'),
             'slug' => $slug,
         ];
 
         $validated = $this->validate([
-            'name' => [
+            'category_name' => [
                 'rules' => 'required',
                 'errors' => 'Nama kategori tidak boleh kosong'
             ],
@@ -108,7 +108,7 @@ class CategoryController extends BaseController
         }
 
         $validated = $this->validate([
-            'name' => [
+            'category_name' => [
                 'rules' => 'required',
                 'errors' => 'Nama harus diisi'
             ],
@@ -119,8 +119,8 @@ class CategoryController extends BaseController
         }
 
         $data = [
-            'name' => htmlspecialchars($this->request->getVar('name')),
-            'slug' => url_title(htmlspecialchars($this->request->getVar('name')), '-', true),
+            'category_name' => htmlspecialchars($this->request->getVar('category_name')),
+            'slug' => url_title(htmlspecialchars($this->request->getVar('category_name')), '-', true),
         ];
 
         $category_model = new Category();

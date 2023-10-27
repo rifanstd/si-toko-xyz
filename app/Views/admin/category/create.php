@@ -9,10 +9,11 @@
         <div class="card-body">
             <div class="form-group">
                 <label for="">Nama Kategori</label>
-                <input type="text" class="form-control <?= ($validation->hasError('name')) ? 'is-invalid' : ''; ?>"
-                    id="" name="name" placeholder="Masukkan nama kategori">
+                <input type="text"
+                    class="form-control <?= ($validation->hasError('category_name')) ? 'is-invalid' : ''; ?>" id=""
+                    name="category_name" placeholder="Masukkan nama kategori">
                 <div class="invalid-feedback">
-                    <?= $validation->getError('name') ?>
+                    <?= $validation->getError('category_name') ?>
                 </div>
             </div>
         </div>

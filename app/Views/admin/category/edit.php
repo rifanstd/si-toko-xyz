@@ -10,8 +10,8 @@
             <div class="form-group">
                 <label for="">Nama Kategori</label>
                 <input type="hidden" name="id_category" value="<?= $category['id_category']; ?>">
-                <input type="text" class="form-control" id="" name="name" placeholder="Masukkan nama kategori"
-                    value="<?= $category['name']; ?>">
+                <input type="text" class="form-control" id="" name="cateory_name" placeholder="Masukkan nama kategori"
+                    value="<?= $category['category_name']; ?>">
             </div>
         </div>
         <div class="card-footer">
