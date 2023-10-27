@@ -73,6 +73,14 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="/categories" class="nav-link">
+                                <span><i class="nav-icon fas fa-th"></i></span>
+                                <p>
+                                    Kategori
+                                </p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>

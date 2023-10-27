@@ -1,6 +1,7 @@
 <?php
 
 use App\Controllers\AuthController;
+use App\Controllers\CategoryController;
 use App\Controllers\DashboardController;
 use App\Controllers\UserController;
 use CodeIgniter\Router\RouteCollection;
@@ -18,9 +19,22 @@ $routes->post('/login_attempt', [AuthController::class, 'login_attempt']);
 $routes->get('/logout', [AuthController::class, 'logout']); // test
 
 // -- ADMIN ROLE -- 
-$routes->get('/users', [UserController::class, 'index']);
-$routes->get('/users/create', [UserController::class, 'create']);
-$routes->post('/users/store', [UserController::class, 'store']);
-$routes->get('/users/edit/(:any)', [UserController::class, 'edit']);
-$routes->post('/users/update', [UserController::class, 'update']);
-$routes->delete('/users/delete', [UserController::class, 'delete']);
+// Users
+$routes->group('users', static function ($routes) {
+    $routes->get('', [UserController::class, 'index']);
+    $routes->get('create', [UserController::class, 'create']);
+    $routes->post('store', [UserController::class, 'store']);
+    $routes->get('edit/(:any)', [UserController::class, 'edit']);
+    $routes->post('update', [UserController::class, 'update']);
+    $routes->delete('delete', [UserController::class, 'delete']);
+});
+
+// Categories
+$routes->group('categories', static function ($routes) {
+    $routes->get('', [CategoryController::class, 'index']);
+    $routes->get('create', [CategoryController::class, 'create']);
+    $routes->post('store', [CategoryController::class, 'store']);
+    $routes->get('edit/(:any)', [CategoryController::class, 'edit']);
+    $routes->post('update', [CategoryController::class, 'update']);
+    $routes->delete('delete', [CategoryController::class, 'delete']);
+});

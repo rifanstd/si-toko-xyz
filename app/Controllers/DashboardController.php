@@ -11,7 +11,6 @@ class DashboardController extends BaseController
         $session = session();
 
         if ($session->get("isLoggedIn") != true) {
-            echo "APASIH";
             return redirect()->back()->withInput();
         }
 
