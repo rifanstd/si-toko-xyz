@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\User;
+use Config\Services;
 
 class UserController extends BaseController
 {
@@ -34,10 +35,17 @@ class UserController extends BaseController
             return redirect()->back()->withInput();
         }
 
+        if (session('validation') != null) {
+            $validation = session('validation');
+        } else {
+            $validation = Services::validation();
+        }
+
         $data = [
             'title' => 'Tambah Akun Baru',
-            'validation' => \Config\Services::validation(),
+            'validation' => $validation,
         ];
+
 
         return view('admin/account/create', $data);
     }
@@ -75,7 +83,8 @@ class UserController extends BaseController
         ]);
 
         if (!$validated) {
-            return redirect()->back()->withInput();
+            $validation = Services::validation();
+            return redirect()->back()->withInput()->with('validation', $validation);
         }
 
         $user_model = new User();
@@ -97,10 +106,16 @@ class UserController extends BaseController
 
         $user = $user_model->find($id_user);
 
+        if (session('validation') != null) {
+            $validation = session('validation');
+        } else {
+            $validation = Services::validation();
+        }
+
         $data = [
             'title' => 'Edit Data Akun',
             'user' => $user,
-            'validation' => \Config\Services::validation()
+            'validation' => $validation
         ];
 
         return view('admin/account/edit', $data);
@@ -119,6 +134,9 @@ class UserController extends BaseController
 
         $rule_full_name = [
             'rules' => 'required',
+            'errors' => [
+                'required' => 'Nama harus di isi'
+            ]
         ];
 
         if ($old_user['username'] == $this->request->getVar('username')) {
@@ -152,7 +170,8 @@ class UserController extends BaseController
         ]);
 
         if (!$validated) {
-            return redirect()->back()->withInput();
+            $validation = Services::validation();
+            return redirect()->back()->withInput()->with('validation', $validation);
         }
 
         $data = [

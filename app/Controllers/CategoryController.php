@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Category;
+use Config\Services;
 
 class CategoryController extends BaseController
 {
@@ -34,9 +35,22 @@ class CategoryController extends BaseController
             return redirect()->back()->withInput();
         }
 
+        if (session('validation') != null) {
+            $validation = session('validation');
+        } else {
+            $validation = Services::validation();
+        }
+
+        if (session('data_already_exist') != null) {
+            $data_already_exist = session('data_already_exist');
+        } else {
+            $data_already_exist = null;
+        }
+
         $data = [
             'title' => 'Tambah Kategori Baru',
-            'validation' => \Config\Services::validation(),
+            'validation' => $validation,
+            'data_already_exist' => $data_already_exist,
         ];
 
         return view('admin/category/create', $data);
@@ -60,19 +74,25 @@ class CategoryController extends BaseController
         $validated = $this->validate([
             'category_name' => [
                 'rules' => 'required',
-                'errors' => 'Nama kategori tidak boleh kosong'
-            ],
-            'slug' => [
-                'rules' => 'is_unique[categories.slug]',
-                'errors' => 'Data ini sudah ada',
+                'errors' => [
+                    'required' => 'Nama kategori tidak boleh kosong',
+                ]
             ],
         ]);
 
         if (!$validated) {
-            return redirect()->back()->withInput();
+            $validation = Services::validation();
+            return redirect()->back()->withInput()->with('validation', $validation);
         }
 
         $category_model = new Category();
+
+        $category = $category_model->where('slug', $slug)->first();
+
+        if ($category != null) {
+            return redirect()->back()->withInput()->with('data_already_exist', 'Data kategori tersebut sudah ada dalam database');
+        }
+
         $category_model->insert($data);
 
         session()->setFlashdata('success_msg', 'Data berhasil ditambahkan');
@@ -88,12 +108,26 @@ class CategoryController extends BaseController
             return redirect()->back()->withInput();
         }
 
+        if (session('validation') != null) {
+            $validation = session('validation');
+        } else {
+            $validation = Services::validation();
+        }
+
+        if (session('data_already_exist') != null) {
+            $data_already_exist = session('data_already_exist');
+        } else {
+            $data_already_exist = null;
+        }
+
         $category_model = new Category();
         $category = $category_model->find($id);
 
         $data = [
             'title' => 'Edit Kategori',
             'category' => $category,
+            'validation' => $validation,
+            'data_already_exist' => $data_already_exist,
         ];
 
         return view('admin/category/edit.php', $data);
@@ -110,20 +144,32 @@ class CategoryController extends BaseController
         $validated = $this->validate([
             'category_name' => [
                 'rules' => 'required',
-                'errors' => 'Nama harus diisi'
+                'errors' => [
+                    'required' => 'Nama harus diisi',
+                ]
             ],
         ]);
 
         if (!$validated) {
-            return redirect()->back()->withInput();
+            $validation = Services::validation();
+            return redirect()->back()->withInput()->with('validation', $validation);
         }
+
+        $slug = url_title($this->request->getVar('category_name'), '-', true);
 
         $data = [
             'category_name' => htmlspecialchars($this->request->getVar('category_name')),
-            'slug' => url_title(htmlspecialchars($this->request->getVar('category_name')), '-', true),
+            'slug' => $slug,
         ];
 
         $category_model = new Category();
+
+        $category = $category_model->where('slug', $slug)->first();
+
+        if ($category != null) {
+            return redirect()->back()->withInput()->with('data_already_exist', 'Data kategori tersebut sudah ada dalam database');
+        }
+
         $category_model->update($this->request->getVar('id_category'), $data);
 
         session()->setFlashdata('success_msg', 'Data berhasil diubah');

@@ -1,6 +1,13 @@
 <?= $this->extend('layouts/main'); ?>
 
 <?= $this->section('content'); ?>
+
+<?php if ($data_already_exist != null): ?>
+    <div class="alert alert-warning">
+        <?= $data_already_exist ?>
+    </div>
+<?php endif; ?>
+
 <div class="card card-primary">
     <div class="card-header">
         <h3 class="card-title">Form Tambah Kategori</h3>
