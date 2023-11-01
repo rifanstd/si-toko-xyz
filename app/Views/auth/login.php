@@ -24,7 +24,11 @@
         <div class="login-logo">
             <b>Sistem Penjualan <br> Toko XYZ</b>
         </div>
-        <!-- /.login-logo -->
+        <?php if (session()->getFlashdata('message')): ?>
+            <div class="alert alert-warning">
+                <?= session()->getFlashdata('message') ?>
+            </div>
+        <?php endif; ?>
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Silahkan Masuk Terlebih Dahulu</p>

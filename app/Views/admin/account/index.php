@@ -3,6 +3,12 @@
 <?= $this->extend('layouts/main'); ?>
 
 <?= $this->section('content'); ?>
+<?php if (session()->getFlashdata('success_msg')): ?>
+    <div class="alert alert-warning">
+        <?= session()->getFlashdata('success_msg') ?>
+    </div>
+<?php endif; ?>
+
 <div class="card">
     <div class="card-header">
         <div class="row align-items-center">
@@ -14,7 +20,6 @@
             </div>
         </div>
     </div>
-    <!-- /.card-header -->
     <div class="card-body">
         <table id="example2" class="table table-bordered table-hover">
             <thead>
@@ -58,6 +63,7 @@
                             </div>
                         </td>
                     </tr>
+                    <?php $no++; ?>
                 <?php endforeach; ?>
             </tbody>
         </table>
