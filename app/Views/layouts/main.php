@@ -89,6 +89,14 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="/suppliers" class="nav-link">
+                                <span><i class="nav-icon fas fa-th"></i></span>
+                                <p>
+                                    Supplier
+                                </p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>

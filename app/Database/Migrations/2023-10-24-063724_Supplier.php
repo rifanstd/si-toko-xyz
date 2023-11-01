@@ -19,7 +19,7 @@ class Supplier extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 100,
             ],
-            'name' => [
+            'supplier_name' => [
                 'type' => 'VARCHAR',
                 'constraint' => 100,
             ],

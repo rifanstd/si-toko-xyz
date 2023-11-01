@@ -4,6 +4,7 @@ use App\Controllers\AuthController;
 use App\Controllers\CategoryController;
 use App\Controllers\DashboardController;
 use App\Controllers\ProductController;
+use App\Controllers\SupplierController;
 use App\Controllers\UserController;
 use CodeIgniter\Router\RouteCollection;
 
@@ -48,4 +49,14 @@ $routes->group('products', static function ($routes) {
     $routes->get('edit/(:any)', [ProductController::class, 'edit']);
     $routes->post('update', [ProductController::class, 'update']);
     $routes->delete('delete', [ProductController::class, 'delete']);
+});
+
+// Products
+$routes->group('suppliers', static function ($routes) {
+    $routes->get('', [SupplierController::class, 'index']);
+    $routes->get('create', [SupplierController::class, 'create']);
+    $routes->post('store', [SupplierController::class, 'store']);
+    $routes->get('edit/(:any)', [SupplierController::class, 'edit']);
+    $routes->post('update', [SupplierController::class, 'update']);
+    $routes->delete('delete', [SupplierController::class, 'delete']);
 });
