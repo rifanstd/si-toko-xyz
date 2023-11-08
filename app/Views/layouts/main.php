@@ -65,38 +65,41 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="/users" class="nav-link">
-                                <span><i class="nav-icon fas fa-user"></i></span>
-                                <p>
-                                    Akun
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/categories" class="nav-link">
-                                <span><i class="nav-icon fas fa-th"></i></span>
-                                <p>
-                                    Kategori
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/products" class="nav-link">
-                                <span><i class="nav-icon fas fa-th"></i></span>
-                                <p>
-                                    Produk
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/suppliers" class="nav-link">
-                                <span><i class="nav-icon fas fa-th"></i></span>
-                                <p>
-                                    Supplier
-                                </p>
-                            </a>
-                        </li>
+                        <?php if (session()->get('role') == 1): ?>
+                            <li class="nav-item">
+                                <a href="/users" class="nav-link">
+                                    <span><i class="nav-icon fas fa-user"></i></span>
+                                    <p>
+                                        Akun
+                                    </p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="/categories" class="nav-link">
+                                    <span><i class="nav-icon fas fa-th"></i></span>
+                                    <p>
+                                        Kategori
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/products" class="nav-link">
+                                    <span><i class="nav-icon fas fa-th"></i></span>
+                                    <p>
+                                        Produk
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/suppliers" class="nav-link">
+                                    <span><i class="nav-icon fas fa-th"></i></span>
+                                    <p>
+                                        Supplier
+                                    </p>
+                                </a>
+                            </li>
+                        <?php endif ?>
                     </ul>
                 </nav>
             </div>

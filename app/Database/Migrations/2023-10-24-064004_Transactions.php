@@ -15,6 +15,20 @@ class Transactions extends Migration
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
+            'id_product' => [
+                'type' => 'INT',
+                'constraint' => 20,
+                'unsigned' => true,
+            ],
+            'product_name' => [
+                'type' => 'VARCHAR',
+                'constraint' => 100,
+            ],
+            'num_of_products' => [
+                'type' => 'INT',
+                'constraint' => 20,
+                'unsigned' => true,
+            ],
             'total_price' => [
                 'type' => 'INT',
                 'constraint' => 20,

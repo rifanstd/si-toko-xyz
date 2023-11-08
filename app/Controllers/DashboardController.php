@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\Product;
+use App\Models\Transaction;
 
 class DashboardController extends BaseController
 {
@@ -14,14 +16,13 @@ class DashboardController extends BaseController
             return redirect()->back()->withInput();
         }
 
-        $data = [
-            'title' => 'Dashboard ' . $session->get('full_name'),
-        ];
-
         if ($session->get('role') == '1') {
+            $data = [
+                'title' => 'Dashboard ' . $session->get('full_name'),
+            ];
             return view('admin/dashboard', $data);
         } else {
-            return view('employee/dashboard', $data);
+            return redirect()->to('/transactions');
         }
 
     }

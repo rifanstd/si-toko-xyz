@@ -5,6 +5,7 @@ use App\Controllers\CategoryController;
 use App\Controllers\DashboardController;
 use App\Controllers\ProductController;
 use App\Controllers\SupplierController;
+use App\Controllers\TransactionController;
 use App\Controllers\UserController;
 use CodeIgniter\Router\RouteCollection;
 
@@ -60,3 +61,9 @@ $routes->group('suppliers', static function ($routes) {
     $routes->post('update', [SupplierController::class, 'update']);
     $routes->delete('delete', [SupplierController::class, 'delete']);
 });
+
+// Transactions
+$routes->get('/transactions', [TransactionController::class, 'index']);
+$routes->get('/transactions/create', [TransactionController::class, 'create']);
+$routes->post('/transactions/store', [TransactionController::class, 'store']);
+$routes->delete('/transactions/delete', [TransactionController::class, 'delete']);
