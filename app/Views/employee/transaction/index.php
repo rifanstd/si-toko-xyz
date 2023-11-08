@@ -17,7 +17,9 @@
                 <h3 class="card-title">Table Riwayat Transaksi</h3>
             </div>
             <div class="col">
-                <a href="/transactions/create" class="btn btn-sm btn-primary">Tambah Transaksi</a>
+                <?php if (session()->get('role') == '2'): ?>
+                    <a href="/transactions/create" class="btn btn-sm btn-primary">Tambah Transaksi</a>
+                <?php endif ?>
             </div>
         </div>
     </div>

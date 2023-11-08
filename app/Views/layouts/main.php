@@ -99,6 +99,14 @@
                                     </p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="/transactions" class="nav-link">
+                                    <span><i class="nav-icon fas fa-th"></i></span>
+                                    <p>
+                                        Transaksi
+                                    </p>
+                                </a>
+                            </li>
                         <?php endif ?>
                     </ul>
                 </nav>

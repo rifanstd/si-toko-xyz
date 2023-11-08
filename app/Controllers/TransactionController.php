@@ -12,7 +12,7 @@ class TransactionController extends BaseController
     {
         $session = session();
 
-        if ($session->get("role") != '2') {
+        if ($session->get("isLoggedIn") != true) {
             return redirect()->back()->withInput();
         }
 
