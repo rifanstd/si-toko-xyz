@@ -20,7 +20,7 @@ class Product extends Migration
                 'constraint' => 20,
                 'unsigned' => true,
             ],
-            'name' => [
+            'product_name' => [
                 'type' => 'VARCHAR',
                 'constraint' => 100,
             ],
